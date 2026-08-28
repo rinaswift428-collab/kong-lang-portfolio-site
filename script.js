@@ -1,7 +1,8 @@
 const revealItems=document.querySelectorAll('.reveal');
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-if(!reduceMotion&&'IntersectionObserver'in window){
+try{
+if('IntersectionObserver'in window){
   const observer=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if(!entry.isIntersecting)return;
@@ -14,10 +15,18 @@ if(!reduceMotion&&'IntersectionObserver'in window){
     const explicitDelay=Number(item.dataset.delay||0);
     const sequenceDelay=item.closest('.hero')?Math.min(index,4)*85:Math.min(index%4,2)*60;
     item.style.transitionDelay=`${explicitDelay||sequenceDelay}ms`;
-    observer.observe(item);
+  });
+
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{
+      revealItems.forEach(item=>observer.observe(item));
+    });
   });
 }else{
   revealItems.forEach(item=>item.classList.add('is-visible'));
+}
+}catch(error){
+  console.error('Reveal init error:',error);
 }
 
 const header=document.querySelector('.site-header');
@@ -43,3 +52,9 @@ window.addEventListener('scroll',()=>{
   ticking=true;
   requestAnimationFrame(updateScrollState);
 },{passive:true});
+
+window.addEventListener('pageshow',(event)=>{
+  if(event.persisted){
+    revealItems.forEach(item=>item.classList.add('is-visible'));
+  }
+});

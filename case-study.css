@@ -473,7 +473,7 @@ figcaption span:last-child { font-family: var(--latin); text-align: right; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal { transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
 }
 
 /* Defensive mobile rule shared by every case-study image variant. */

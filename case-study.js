@@ -1,7 +1,8 @@
 const revealItems = document.querySelectorAll('.reveal');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-if (reduceMotion || !('IntersectionObserver' in window)) {
+try {
+if (!('IntersectionObserver' in window)) {
   revealItems.forEach((item) => item.classList.add('is-visible'));
 } else {
   const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -12,7 +13,14 @@ if (reduceMotion || !('IntersectionObserver' in window)) {
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
 
-  revealItems.forEach((item) => revealObserver.observe(item));
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      revealItems.forEach((item) => revealObserver.observe(item));
+    });
+  });
+}
+} catch (error) {
+  console.error('Reveal init error:', error);
 }
 
 const progressBar = document.querySelector('.page-progress span');
@@ -71,3 +79,9 @@ if ('IntersectionObserver' in window) {
 
   sections.forEach((section) => sectionObserver.observe(section));
 }
+
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) {
+    revealItems.forEach((item) => item.classList.add('is-visible'));
+  }
+});
