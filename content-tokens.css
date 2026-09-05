@@ -1,0 +1,40 @@
+/* Content tokens: semantic classes emitted by the content editor only when used. */
+/* Image display size presets - apply to single figures only; never exceed container; no cropping. */
+.media-card.portrait.size-small img,
+.media-card--contained.size-small img,
+.media-card.source-thumb.size-small img { width: min(100%, calc(var(--media-target-width) * 0.6)); }
+.media-card.portrait.size-medium img,
+.media-card--contained.size-medium img,
+.media-card.source-thumb.size-medium img { width: min(100%, calc(var(--media-target-width) * 0.8)); }
+.media-card:not(.portrait):not(.source-thumb):not(.media-card--contained).size-small img { width: 64%; margin-inline: auto; }
+.media-card:not(.portrait):not(.source-thumb):not(.media-card--contained).size-medium img { width: 82%; margin-inline: auto; }
+/* Text controls - section copy */
+.section-copy.copy-size-small p { font-size: 13px; line-height: 1.75; }
+.section-copy.copy-size-large p { font-size: 17px; line-height: 1.85; }
+.section-copy.copy-color-muted p { color: var(--muted); }
+.section-copy.copy-color-accent p { color: var(--accent); }
+.section-copy.copy-align-center { text-align: center; }
+.section-copy.copy-align-center p { margin-inline: auto; }
+.section-copy.copy-align-right { text-align: right; }
+.section-copy.copy-align-right p { margin-inline: auto; }
+/* Section heading colour */
+.section-heading h2.heading-accent { color: var(--accent); }
+
+/* 网格/多图单元格内的大小预设（格子内缩放，不溢出） */
+.media-grid .media-card.size-small img { width: 60%; margin-inline: auto; }
+.media-grid .media-card.size-medium img { width: 80%; margin-inline: auto; }
+.media-grid .media-card.size-large img { width: 100%; }
+/* 开场图大小预设 */
+.opening-stage.size-small img { width: min(100%, 64%); margin-inline: auto; }
+.opening-stage.size-medium img { width: min(100%, 82%); margin-inline: auto; }
+
+/* 首页与开场图：统一 容器/大小/底卡 的受控映射（在既有框架内缩放，不溢出） */
+.hero-image-wrap.size-small, .project-image-stage.size-small { max-width: 64%; margin-inline: auto; }
+.hero-image-wrap.size-medium, .project-image-stage.size-medium { max-width: 82%; margin-inline: auto; }
+.hero-image-wrap.frame-card, .project-image-stage.frame-card { background: #ebe5da; padding: 22px; }
+.hero-image-wrap.frame-whitespace, .project-image-stage.frame-whitespace { background: #f0ebe1; padding: 46px; }
+.project-media--image.backdrop-dark { background: #252320 !important; }
+.hero-image-wrap.backdrop-dark { background: #252320 !important; }
+.opening-stage.frame-card { padding: 28px; background: #ebe5da; }
+.opening-stage.frame-whitespace { padding: 72px; background: #f0ebe1; }
+.opening-stage.backdrop-dark { background: #252320 !important; }
