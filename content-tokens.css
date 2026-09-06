@@ -38,3 +38,11 @@
 .opening-stage.frame-card { padding: 28px; background: #ebe5da; }
 .opening-stage.frame-whitespace { padding: 72px; background: #f0ebe1; }
 .opening-stage.backdrop-dark { background: #252320 !important; }
+
+/* 首页 landscape 封面底色（黄帝陵等）——受编辑器控制，不再硬编码单一青色 */
+.project-media--landscape.backdrop-default { background: #d9eee6; }
+.project-media--landscape.backdrop-paper { background: #f7f2e8; }
+.project-media--landscape.backdrop-gray { background: #e2ddd2; }
+.project-media--landscape.backdrop-aqua { background: #d9eee6; }
+.project-media--landscape.backdrop-accent { background: #b33b30; }
+.project-media--landscape.backdrop-none { background: transparent; }
