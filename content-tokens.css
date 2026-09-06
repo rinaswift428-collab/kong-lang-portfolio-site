@@ -46,3 +46,8 @@
 .project-media--landscape.backdrop-aqua { background: #d9eee6; }
 .project-media--landscape.backdrop-accent { background: #b33b30; }
 .project-media--landscape.backdrop-none { background: transparent; }
+
+/* 每张图片独立的 Lead/Body：文字紧贴所属图片，下一张图片与文字之间保持呼吸间距 */
+.section-copy.media-copy { padding-top: 28px; }
+.media-copy + .media-card,
+.media-copy + .media-grid { margin-top: 84px; }
